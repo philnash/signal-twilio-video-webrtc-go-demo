@@ -1,0 +1,30 @@
+{
+  "name": "signal-twilio-videe-webrtc-go",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "run-p client:start server:start",
+    "deploy": "twilio-run deploy",
+    "predeploy": "build",
+    "build": "parcel build src/index.html --out-dir assets",
+    "client:start": "parcel watch src/index.html --out-dir assets",
+    "server:start": "twilio-run"
+  },
+  "dependencies": {
+    "@twilio/runtime-handler": "1.1.2",
+    "twilio": "^3.66",
+    "twilio-video": "^2.15.3"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.5",
+    "twilio-run": "^3.2.1"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
+}
