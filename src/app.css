@@ -107,6 +107,7 @@ form button:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 10px;
 }
 .video-chat > div {
   width: 100%;
