@@ -36,7 +36,8 @@ const init = async function () {
   const form = document.getElementById("connect");
   const identityInput = document.getElementById("identity");
   const nameInput = document.getElementById("name");
-  form.addEventListener("submit", () => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
     const identity = identityInput.value;
     const name = nameInput.value;
     form.remove();
