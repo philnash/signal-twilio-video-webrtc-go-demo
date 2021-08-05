@@ -1,39 +1,33 @@
 import * as Video from "twilio-video";
 
 const connectToRoom = async function (identity, name) {
-  try {
-    const { token } = await fetch("/token", {
-      method: "POST",
-      body: new URLSearchParams({ name, identity }),
-    }).then((response) => response.json());
-    const room = await Video.connect(token, {
-      name: name,
-      video: true,
-      audio: true,
-    });
-    addParticipant(room.localParticipant);
-    room.participants.forEach(addParticipant);
-    room.on("participantConnected", addParticipant);
-  } catch (error) {
-    console.error("Could not connect to room");
-    console.error(error);
-  }
+  // Fetch the token and then connect to the room
+  const data = await fetch("/token", {
+    method: "POST",
+    body: new URLSearchParams({ identity, name }),
+  }).then((res) => res.json());
+  const room = await Video.connect(data.token, {
+    video: true,
+    audio: true,
+    name: name,
+  });
+  addParticipant(room.localParticipant);
+  room.participants.forEach(addParticipant);
+  room.on("participantConnected", addParticipant);
 };
 
 const addParticipant = function (participant) {
   const chat = document.querySelector(".video-chat");
   const element = document.createElement("div");
+  // Get participant tracks here and add them to the div.
+  const trackSubscribed = (track) => {
+    element.append(track.attach());
+  };
   participant.tracks.forEach((trackPublication) => {
     if (trackPublication.track) {
-      const trackElement = trackPublication.track.attach();
-      element.appendChild(trackElement);
+      trackSubscribed(trackPublication.track);
     }
   });
-
-  const trackSubscribed = function (track) {
-    const trackElement = track.attach();
-    element.appendChild(trackElement);
-  };
   participant.on("trackSubscribed", trackSubscribed);
   chat.appendChild(element);
 };

@@ -16,7 +16,6 @@ exports.handler = async function (context, event, callback) {
   const { name, identity } = event;
   const client = context.getTwilioClient();
   const room = await getRoom(client, name);
-  console.log(event);
   const accessToken = new AccessToken(
     context.ACCOUNT_SID,
     context.API_KEY,
