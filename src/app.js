@@ -21,7 +21,7 @@ const addParticipant = function (participant) {
   const element = document.createElement("div");
   // Get participant tracks here and add them to the div.
   const trackSubscribed = (track) => {
-    element.append(track.attach());
+    element.appendChild(track.attach());
   };
   participant.tracks.forEach((trackPublication) => {
     if (trackPublication.track) {
