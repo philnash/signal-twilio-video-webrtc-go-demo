@@ -6,6 +6,13 @@ Twilio WebRTC Go is a free service that allows you to build a custom one-to-one 
 
 If you outgrow Twilio WebRTC Go, you can upgrade your room without changing the code as the SDK is the same.
 
+* [How to run this application](#how-to-run-this-application)
+  * [Deploy](#deploy)
+* [How it works](#how-it-works)
+  * [Functions](#functions)
+  * [Static Assets](#static-assets)
+* [Find out more](#find-out-more)
+
 ## How to run this application
 
 You will need Node.js 12 and a [free Twilio account](https://www.twilio.com/try-twilio) to run this application.
