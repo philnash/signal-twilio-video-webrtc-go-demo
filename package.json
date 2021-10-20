@@ -26,5 +26,6 @@
   },
   "browserslist": [
     "since 2017-06"
-  ]
+  ],
+  "license": "MIT"
 }
