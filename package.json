@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p client:start server:start",
     "deploy": "twilio-run deploy",
-    "predeploy": "build",
+    "predeploy": "npm run build",
     "build": "parcel build src/index.html --out-dir assets",
     "client:start": "parcel watch src/index.html --out-dir assets",
     "server:start": "twilio-run"
